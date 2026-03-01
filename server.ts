@@ -108,15 +108,19 @@ if (settingsCount === 0) {
 
 // Seed Admin if not exists
 const adminEmail = "tiagolimacamposoficial@gmail.com";
-const adminExists = db.prepare("SELECT * FROM users WHERE email = ?").get(adminEmail);
-if (!adminExists) {
-  const hashedPassword = bcrypt.hashSync("tiagolima123", 10);
+const adminPassword = "tiagolima123";
+const existingAdmin = db.prepare("SELECT * FROM users WHERE email = ?").get(adminEmail);
+
+if (!existingAdmin) {
+  const hashedPassword = bcrypt.hashSync(adminPassword, 10);
   db.prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)").run(
     "Tiago Lima",
     adminEmail,
     hashedPassword,
     "admin"
   );
+} else if (existingAdmin.role !== 'admin') {
+  db.prepare("UPDATE users SET role = 'admin' WHERE email = ?").run(adminEmail);
 }
 
 // Migration: Hash existing plain text passwords
