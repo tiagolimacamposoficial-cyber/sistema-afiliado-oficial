@@ -327,7 +327,7 @@ export default function App() {
             {view === 'login' && (
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
                 <p className="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1">Acesso Administrativo</p>
-                <p className="text-xs text-slate-600 font-mono">admin@admin.com / admin123</p>
+                <p className="text-xs text-slate-600 font-mono">tiagolimacamposoficial@gmail.com / tiagolima123</p>
               </div>
             )}
           </div>

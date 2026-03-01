@@ -107,12 +107,13 @@ if (settingsCount === 0) {
 }
 
 // Seed Admin if not exists
-const adminExists = db.prepare("SELECT * FROM users WHERE role = 'admin'").get();
+const adminEmail = "tiagolimacamposoficial@gmail.com";
+const adminExists = db.prepare("SELECT * FROM users WHERE email = ?").get(adminEmail);
 if (!adminExists) {
-  const hashedPassword = bcrypt.hashSync("admin123", 10);
+  const hashedPassword = bcrypt.hashSync("tiagolima123", 10);
   db.prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)").run(
-    "Administrador",
-    "admin@admin.com",
+    "Tiago Lima",
+    adminEmail,
     hashedPassword,
     "admin"
   );
