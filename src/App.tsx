@@ -316,13 +316,20 @@ export default function App() {
             </Button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-4">
             <button 
               onClick={() => setView(view === 'login' ? 'register' : 'login')}
               className="text-sm font-medium text-indigo-600 hover:text-indigo-700"
             >
               {view === 'login' ? 'Não tem uma conta? Cadastre-se' : 'Já tem uma conta? Faça login'}
             </button>
+
+            {view === 'login' && (
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <p className="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1">Acesso Administrativo</p>
+                <p className="text-xs text-slate-600 font-mono">admin@admin.com / admin123</p>
+              </div>
+            )}
           </div>
         </Card>
       </div>
