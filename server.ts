@@ -24,11 +24,13 @@ db.exec(`
     pix TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
+`);
 
-  // Migration: Add columns if they don't exist
-  try { db.exec("ALTER TABLE users ADD COLUMN whatsapp TEXT"); } catch(e) {}
-  try { db.exec("ALTER TABLE users ADD COLUMN pix TEXT"); } catch(e) {}
+// Migration: Add columns if they don't exist
+try { db.exec("ALTER TABLE users ADD COLUMN whatsapp TEXT"); } catch(e) {}
+try { db.exec("ALTER TABLE users ADD COLUMN pix TEXT"); } catch(e) {}
 
+db.exec(`
   CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
